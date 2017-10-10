@@ -72,11 +72,11 @@ estimate.ATE <- function(pscore.formula, pscore.family,
   
   if (suppress.warnings){
     gam.ps <- suppressWarnings(gam(pscore.formula, family=pscore.family,
-                  data=data, na.action="na.fail", ...))
+                  data=data, ...))
   }
   else{
     gam.ps <- gam(pscore.formula, family=pscore.family,
-                  data=data, na.action="na.fail", ...)
+                  data=data, ...)
   }
 
 
@@ -127,9 +127,9 @@ estimate.ATE <- function(pscore.formula, pscore.family,
   
   if (suppress.warnings){
     gam.t <- suppressWarnings(gam(outcome.formula.t, family=outcome.family,
-                 data=treated.data, na.action="na.fail", ...))
+                 data=treated.data, ...))
     gam.c <- suppressWarnings(gam(outcome.formula.c, family=outcome.family,
-                 data=control.data, na.action="na.fail", ...))
+                 data=control.data, ...))
     outcome.treated.expectation <- suppressWarnings(predict(gam.t, newdata=data,
                                            type="response", ...))  
     outcome.control.expectation <- suppressWarnings(predict(gam.c, newdata=data,
@@ -139,9 +139,9 @@ estimate.ATE <- function(pscore.formula, pscore.family,
   }
   else{
     gam.t <- gam(outcome.formula.t, family=outcome.family,
-                 data=treated.data, na.action="na.fail", ...)
+                 data=treated.data, ...)
     gam.c <- gam(outcome.formula.c, family=outcome.family,
-                 data=control.data, na.action="na.fail", ...)
+                 data=control.data, ...)
     outcome.treated.expectation <- predict(gam.t, newdata=data,
                                            type="response", ...)  
     outcome.control.expectation <- predict(gam.c, newdata=data,
@@ -524,5 +524,6 @@ estimate.ATE <- function(pscore.formula, pscore.family,
   
   
 }
+
 
 
